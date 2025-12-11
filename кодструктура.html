@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shustoffdesign - дизайн интерьеров</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ==================== ГРУППА: КОНТЕЙНЕРЫ И СЕТКА ==================== -->
+<style>
+/* Базовые контейнеры */
+.container { 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+.section { 
+    padding: 80px 0; 
+}
+</style>
+
+<!-- ==================== ГРУППА: ПЕРЕМЕННЫЕ ЦВЕТОВ И ШРИФТОВ ==================== -->
+<style>
+:root {
+    /* Цвета */
+    --color-primary: #2c3e50;
+    --color-secondary: #e67e22;
+    --color-accent: #3498db;
+    --color-light: #f9f9f9;
+    --color-dark: #1a1a2e;
+    --color-white: #ffffff;
+    --color-gray: #7f8c8d;
+    --color-text: #333333;
+    
+    /* Тени */
+    --shadow-light: 0 5px 15px rgba(0,0,0,0.08);
+    --shadow-medium: 0 10px 25px rgba(0,0,0,0.15);
+    
+    /* Скругления */
+    --radius-small: 4px;
+    --radius-medium: 8px;
+    --radius-large: 12px;
+    
+    /* Анимации */
+    --transition-fast: 0.3s ease;
+    --transition-medium: 0.5s ease;
+}
+</style>
+
+<!-- ==================== ГРУППА: БАЗОВЫЕ СТИЛИ ==================== -->
+<style>
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: var(--color-text); 
+    line-height: 1.6; 
+}
+html { 
+    scroll-behavior: smooth; 
+}
+</style>
+
+<!-- ==================== ГРУППА: ТИПОГРАФИЯ ==================== -->
+<style>
+/* Заголовки */
+h1 { font-size: 3rem; font-weight: 700; color: var(--color-dark); margin-bottom: 20px; }
+h2 { font-size: 2.5rem; font-weight: 600; color: var(--color-dark); margin-bottom: 15px; }
+h3 { font-size: 1.8rem; font-weight: 600; color: var(--color-dark); margin-bottom: 10px; }
+h4 { font-size: 1.3rem; font-weight: 500; color: var(--color-dark); margin-bottom: 10px; }
+
+/* Текст */
+p { 
+    font-size: 1.1rem; 
+    color: var(--color-gray); 
+    margin-bottom: 15px; 
+    line-height: 1.6; 
+}
+
+.section-title { 
+    text-align: center; 
+    margin-bottom: 50px; 
+}
+.section-title h2 { 
+    display: inline-block; 
+    position: relative; 
+    padding-bottom: 15px; 
+}
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+</style>
+
+<!-- ==================== ГРУППА: КНОПКИ ==================== -->
+<style>
+/* Базовый стиль кнопки */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: var(--radius-medium);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: none;
+    text-align: center;
+}
+
+/* Основная кнопка (оранжевая) */
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+.btn-primary:hover {
+    background-color: #d35400;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Вторичная кнопка (с рамкой) */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
+
+/* Кнопка в герое (белая) */
+.btn-hero {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    border: 2px solid var(--color-white);
+}
+.btn-hero:hover {
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+/* Группа кнопок */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+</style>
+<style>
+/* Стили для активного выбранного города */
+.city-tag.active {
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+}
+
+.city-tag {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* Стиль при наведении на город */
+.city-tag:hover {
+    background-color: rgba(230, 126, 34, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Для тёмной секции */
+.section-dark .city-tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.section-dark .city-tag:hover {
+    background-color: rgba(230, 126, 34, 0.4);
+}
+
+.section-dark .city-tag.active {
+    background-color: var(--color-secondary);
+}
+</style>
+<!-- ==================== ГРУППА: КАРТОЧКИ ==================== -->
+<style>
+/* Карточка услуги */
+.card-service {
+    background: var(--color-white);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-fast);
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+}
+.card-service:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.card-service-icon {
+    font-size: 40px;
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+}
+
+.card-service-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.card-service-text {
+    font-size: 0.95rem;
+}
+
+/* Карточка портфолио */
+.card-portfolio {
+    position: relative;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    height: 280px;
+    cursor: pointer;
+}
+
+.card-portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: var(--color-white);
+    padding: 25px;
+    transform: translateY(100%);
+    transition: var(--transition-fast);
+}
+
+.card-portfolio:hover .card-portfolio-overlay {
+    transform: translateY(0);
+}
+.card-portfolio:hover .card-portfolio-img {
+    transform: scale(1.05);
+}
+</style>
+
+<!-- ==================== ГРУППА: ФОРМЫ ==================== -->
+<style>
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius-medium);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+textarea.form-input {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-light);
+}
+</style>
+
+<!-- ==================== ГРУППА: ШАПКА САЙТА ==================== -->
+<style>
+.header {
+    background-color: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-decoration: none;
+}
+.logo span {
+    color: var(--color-secondary);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-dark);
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+.nav-link:hover {
+    color: var(--color-secondary);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--color-dark);
+    cursor: pointer;
+}
+</style>
+
+<!-- ==================== ГРУППА: ГЛАВНЫЙ ЭКРАН (HERO) ==================== -->
+<style>
+.hero {
+    background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.9)), 
+                url('images/image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #ffffff;
+    padding: 180px 0 120px;
+    text-align: center;
+    margin-top: 70px;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    color: #1a1a1a; /* Тёмный для контраста */
+    text-shadow: 0 2px 4px rgba(255,255,255,0.8); /* Обводка для читаемости */
+}
+
+.hero p {
+    color: #333333;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 700px; 
+    margin: 0 auto 40px;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+.hero h1 {
+    color: var(--color-white);
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+</style>
+
+<!-- ==================== ГРУППА: СЕКЦИИ С ФОНОМ ==================== -->
+<style>
+.section-light {
+    background-color: var(--color-light);
+}
+
+.section-dark {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+.section-dark h2,
+.section-dark h3,
+.section-dark p {
+    color: var(--color-white);
+}
+</style>
+
+<!-- ==================== ГРУППА: СЕТКИ И РАСКЛАДКА ==================== -->
+<style>
+.grid-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.grid-portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.flex-about {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.flex-about-text { flex: 1; }
+.flex-about-image { 
+    flex: 1; 
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+}
+
+.flex-contact {
+    display: flex;
+    gap: 60px;
+}
+.flex-contact-info { flex: 1; }
+.flex-contact-form { flex: 1; }
+</style>
+
+<!-- ==================== ГРУППА: ГЕОГРАФИЯ ==================== -->
+<style>
+.cities-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.city-tag {
+    background-color: rgba(253, 252, 252, 0.1);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+.city-tag:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-3px);
+}
+.city-tag.highlight {
+    background-color: var(--color-secondary);
+}
+</style>
+
+<!-- ==================== ГРУППА: КОНТАКТЫ ==================== -->
+<style>
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(230, 126, 34, 0.1);
+    color: var(--color-secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+</style>
+
+<!-- ==================== ГРУППА: ПОДВАЛ ==================== -->
+<style>
+.footer {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 70px 0 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-title {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: var(--color-secondary);
+}
+
+.footer-links {
+    list-style: none;
+}
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.footer-links a:hover {
+    color: var(--color-secondary);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255,255,255,0.1);
+    color: var(--color-white);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+.social-link:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.9rem;
+}
+</style>
+
+<!-- ==================== ГРУППА: МОДАЛЬНЫЕ ОКНА ==================== -->
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    max-width: 900px;
+    width: 100%;
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    padding: 25px;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 35px;
+}
+
+.modal-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: var(--radius-medium);
+    margin-bottom: 25px;
+}
+</style>
+
+<!-- ==================== ГРУППА: АДАПТИВНОСТЬ ==================== -->
+<style>
+@media (max-width: 992px) {
+    .flex-about,
+    .flex-contact {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .grid-services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 50px 20px;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-item {
+        margin: 15px 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        padding: 150px 0 80px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .grid-services,
+    .grid-portfolio {
+        grid-template-columns: 1fr;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+</style>
+
+<!-- ==================== ШАПКА САЙТА ==================== -->
+<header class="header">
+    <div class="container header-container">
+        <a href="#hero" class="logo">Shustoff<span>design</span></a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="#about" class="nav-link">О студии</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Услуги</a></li>
+                <li class="nav-item"><a href="#portfolio" class="nav-link">Портфолио</a></li>
+                <li class="nav-item"><a href="#geography" class="nav-link">География</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ==================== ГЛАВНЫЙ ЭКРАН ==================== -->
+<section id="hero" class="hero">
+    <div class="container">
+        <h1>Shustoffdesign — дизайн интерьеров от эскиза до реализации</h1>
+        <p>Дизайн-студия под ключ в Курске и по всей России. Создаем красивые и функциональные пространства, беря на себя все этапы: от концепции до сдачи объекта.</p>
+        <div class="btn-group">
+            <a href="#portfolio" class="btn btn-hero">Посмотреть портфолио</a>
+            <a href="#contact" class="btn btn-secondary">Обсудить проект</a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== СЕКЦИЯ "О СТУДИИ" ==================== -->
+<section id="about" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>О студии</h2>
+            <p>Профессиональный подход к созданию интерьеров с 2008 года</p>
+        </div>
+        
+        <div class="flex-about">
+            <div class="flex-about-text">
+                <h3>Меня зовут Сергей Шустов</h3>
+                <p>Я дизайнер интерьера и руководитель студии Shustoffdesign. Работаю в сфере проектирования с 2008 года.</p>
+                <p>Мы пройдем с вами весь путь — от создания эскиза вашего будущего интерьера до полной реализации задуманного. Мы возьмем все заботы на себя: разработаем продуманный дизайн, подберем материалы и мебель, предоставим надежную строительную бригаду для воплощения проекта в жизнь.</p>
+                <a href="#contact" class="btn btn-primary">Обсудить мой проект</a>
+            </div>
+            <div class="flex-about-image">
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Сергей Шустов - дизайнер интерьера">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== СЕКЦИЯ "УСЛУГИ" ==================== -->
+<section id="services" class="section section-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Наши услуги</h2>
+            <p>Мы предлагаем комплексный подход к созданию интерьера</p>
+        </div>
+        
+        <div class="grid-services">
+            <div class="card-service">
+                <div class="card-service-icon">
+                    <i class="fas fa-pencil-ruler"></i>
+                </div>
+                <h3 class="card-service-title">Дизайн-проект интерьера</h3>
+                <p class="card-service-text">Разработка полного пакета документации: планировочные решения, 3D-визуализации, подбор материалов и оборудования.</p>
+            </div>
+            
+            <div class="card-service">
+                <div class="card-service-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h3 class="card-service-title">Авторский надзор</h3>
+                <p class="card-service-text">Контроль за ходом строительных и отделочных работ для точного соответствия проекту.</p>
+            </div>
+            
+            <div class="card-service">
+                <div class="card-service-icon">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <h3 class="card-service-title">Комплектация и снабжение</h3>
+                <p class="card-service-text">Подбор и поставка всех необходимых материалов, мебели, декора и техники.</p>
+            </div>
+            
+            <div class="card-service">
+                <div class="card-service-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3 class="card-service-title">Коммерческие интерьеры</h3>
+                <p class="card-service-text">Рестораны, отели, бары, общественные зоны. Полный цикл проектирования и реализации.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== СЕКЦИЯ "ПОРТФОЛИО" ==================== -->
+<section id="portfolio" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Портфолио</h2>
+            <p>Наши реализованные проекты</p>
+        </div>
+        
+        <div class="grid-portfolio">
+            <div class="card-portfolio" data-project="hotel">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Отель ELEMENT" class="card-portfolio-img">
+                <div class="card-portfolio-overlay">
+                    <h3>Отель ELEMENT</h3>
+                    <p>Гостиничный бизнес / Эко-дизайн</p>
+                </div>
+            </div>
+            
+            <div class="card-portfolio" data-project="restaurant">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ресторан FOREST GRILL" class="card-portfolio-img">
+                <div class="card-portfolio-overlay">
+                    <h3>Ресторан FOREST GRILL</h3>
+                    <p>Ресторан / Белгород</p>
+                </div>
+            </div>
+            
+            <div class="card-portfolio" data-project="hookah">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Кальянная Shelby" class="card-portfolio-img">
+                <div class="card-portfolio-overlay">
+                    <h3>Кальянная Shelby</h3>
+                    <p>Развлекательное заведение</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== СЕКЦИЯ "ГЕОГРАФИЯ" ==================== -->
+<section id="geography" class="section section-dark">
+    <div class="container">
+        <div class="section-title">
+            <h2>География работ</h2>
+            <p>Мы работаем не только в Курске, но и в других городах России</p>
+        </div>
+        
+        <div class="cities-grid" id="citiesContainer">
+    <div class="city-tag" data-city="Курск">Курск</div>
+    <div class="city-tag" data-city="Москва">Москва</div>
+    <div class="city-tag" data-city="Санкт-Петербург">Санкт-Петербург</div>
+    <div class="city-tag" data-city="Екатеринбург">Екатеринбург</div>
+    <div class="city-tag" data-city="Нижний Новгород">Нижний Новгород</div>
+    <div class="city-tag" data-city="Самара">Самара</div>
+    <div class="city-tag" data-city="Белгород">Белгород</div>
+    <div class="city-tag" data-city="Орел">Орел</div>
+</div>
+    </div>
+</section>
+
+<!-- ==================== СЕКЦИЯ "КОНТАКТЫ" ==================== -->
+<!-- ==================== СЕКЦИЯ "КОНТАКТЫ" ==================== -->
+<section id="contact" class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Контакты</h2>
+            <p>Свяжитесь с нами для обсуждения вашего проекта</p>
+        </div>
+        
+        <div class="flex-contact">
+            <div class="flex-contact-info">
+                <h3>Дизайн-студия Shustoffdesign</h3>
+                <p>Мы готовы воплотить ваши идеи в жизнь. Оставьте заявку, и мы свяжемся с вами в ближайшее время.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Телефоны</h4>
+                            <p>8 (800) 300-61-76 (бесплатно по России)</p>
+                            <p>8 (495) 255-78-84 (Москва)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@shustoffdesign.ru</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex-contact-form">
+                <!-- СООБЩЕНИЕ ОБ УСПЕХЕ/ОШИБКЕ -->
+                <div id="formMessage" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 8px;"></div>
+                
+                <!-- САМА ФОРМА -->
+                <form class="contact-form" id="contactForm" method="POST">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Ваше имя *</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city" class="form-label">Город</label>
+                        <input type="text" id="city" name="city" class="form-input" placeholder="Нажмите на город выше или введите свой">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Опишите ваш проект</label>
+                        <textarea id="message" name="message" class="form-input" placeholder="Тип помещения, площадь, примерные сроки..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span id="submitText">Отправить заявку</span>
+                        <span id="loadingSpinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Отправка...
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ПОДВАЛ ==================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-title">Shustoffdesign</h3>
+                <p>Дизайн-студия под ключ. Создаем красивые и функциональные интерьеры с 2008 года.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-title">Контакты</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-phone"></i> 8 (800) 300-61-76</li>
+                    <li><i class="fas fa-envelope"></i> info@shustoffdesign.ru</li>
+                    <li><i class="fas fa-map-marker-alt"></i> г. Курск, ул. Ленина, 25</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Shustoffdesign. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ==================== МОДАЛЬНОЕ ОКНО ==================== -->
+<div class="modal" id="projectModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Проект</h3>
+            <button class="close-modal" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modalImg" src="" alt="Проект" class="modal-img">
+            <div id="modalDescription"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== ГРУППА: JS ДЛЯ МЕНЮ ==================== -->
+<script>
+// Мобильное меню
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+});
+
+
+// ГРУППА: JS ДЛЯ ВЫБОРА ГОРОДА
+//<!-- ==================== ГРУППА: JS ДЛЯ ВЫБОРА ГОРОДА ==================== -->
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ВЫБОР ГОРОДА
+    const cityTags = document.querySelectorAll('.city-tag');
+    const cityInput = document.getElementById('city');
+    
+    // Сохраняем выбранный город в localStorage
+    let selectedCity = localStorage.getItem('selectedCity') || '';
+    
+    // Если уже есть сохранённый город, показываем его
+    if (selectedCity && cityInput) {
+        cityInput.value = selectedCity;
+        
+        // Выделяем соответствующий тег
+        cityTags.forEach(tag => {
+            if (tag.getAttribute('data-city') === selectedCity) {
+                tag.classList.add('active');
+            }
+        });
+    }
+    
+    // Обработка клика по городу
+    cityTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const city = this.getAttribute('data-city');
+            
+            // Снимаем выделение со всех тегов
+            cityTags.forEach(t => t.classList.remove('active'));
+            
+            // Выделяем выбранный тег
+            this.classList.add('active');
+            
+            // Заполняем поле ввода
+            if (cityInput) {
+                cityInput.value = city;
+                
+                // Сохраняем в localStorage
+                localStorage.setItem('selectedCity', city);
+                
+                // Плавно прокручиваем к форме
+                setTimeout(() => {
+                    document.getElementById('contact').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 300);
+            }
+        });
+    });
+    
+    // Очистка выбора при клике на поле ввода
+    if (cityInput) {
+        cityInput.addEventListener('click', function() {
+            // Снимаем выделение с тегов
+            cityTags.forEach(tag => tag.classList.remove('active'));
+            localStorage.removeItem('selectedCity');
+        });
+        
+        // Очистка при ручном вводе
+        cityInput.addEventListener('input', function() {
+            // Если пользователь начал вводить вручную, снимаем выделение
+            if (this.value !== selectedCity) {
+                cityTags.forEach(tag => tag.classList.remove('active'));
+            }
+        });
+    }
+});
+</script>
+
+//<!-- ==================== ГРУППА: JS ДЛЯ ФОРМЫ ==================== -->
+<!-- ==================== ГРУППА: JS ДЛЯ ФОРМЫ ==================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitText = document.getElementById('submitText');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Отменяем стандартную отправку
+            
+            // Показываем загрузку
+            submitText.style.display = 'none';
+            loadingSpinner.style.display = 'inline';
+            formMessage.style.display = 'none';
+            
+            // Собираем данные формы
+            const formData = new FormData(this);
+            
+            try {
+                // Отправляем на sendmail.php
+                const response = await fetch('sendmail.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                // Получаем ответ
+                const result = await response.json();
+                
+                // Показываем сообщение
+                formMessage.textContent = result.message;
+                formMessage.style.display = 'block';
+                
+                if (result.success) {
+                    // Успех - зеленое сообщение
+                    formMessage.style.backgroundColor = 'rgba(46, 204, 113, 0.1)';
+                    formMessage.style.color = '#27ae60';
+                    formMessage.style.border = '1px solid #27ae60';
+                    
+                    // Очищаем форму
+                    contactForm.reset();
+                    
+                    // Очищаем выбор города
+                    localStorage.removeItem('selectedCity');
+                    document.querySelectorAll('.city-tag').forEach(tag => {
+                        tag.classList.remove('active');
+                    });
+                    
+                    // Автоскрытие через 5 секунд
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                    
+                } else {
+                    // Ошибка - красное сообщение
+                    formMessage.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
+                    formMessage.style.color = '#c0392b';
+                    formMessage.style.border = '1px solid #c0392b';
+                }
+                
+            } catch (error) {
+                // Ошибка сети
+                console.error('Ошибка:', error);
+                formMessage.textContent = 'Ошибка подключения. Проверьте интернет.';
+                formMessage.style.display = 'block';
+                formMessage.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
+                formMessage.style.color = '#c0392b';
+                formMessage.style.border = '1px solid #c0392b';
+                
+            } finally {
+                // Скрываем спиннер загрузки
+                submitText.style.display = 'inline';
+                loadingSpinner.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
+
+<!-- ==================== ГРУППА: JS ДЛЯ ПОРТФОЛИО ==================== -->
+<script>
+// Модальное окно портфолио
+document.addEventListener('DOMContentLoaded', function() {
+    const projects = {
+        hotel: {
+            title: "Отель ELEMENT",
+            img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            description: "<p>Эко-дизайн номеров отеля с использованием натуральных материалов.</p>"
+        },
+        restaurant: {
+            title: "Ресторан FOREST GRILL",
+            img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            description: "<p>Ресторан в Белгороде с концепцией лесного гриля.</p>"
+        },
+        hookah: {
+            title: "Кальянная Shelby",
+            img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            description: "<p>Современное пространство для отдыха с продуманным зонированием.</p>"
+        }
+    };
+    
+    const portfolioItems = document.querySelectorAll('.card-portfolio');
+    const projectModal = document.getElementById('projectModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImg = document.getElementById('modalImg');
+    const modalDescription = document.getElementById('modalDescription');
+    
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const projectId = item.getAttribute('data-project');
+            const project = projects[projectId];
+            
+            if (project) {
+                modalTitle.textContent = project.title;
+                modalImg.src = project.img;
+                modalDescription.innerHTML = project.description;
+                
+                projectModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    closeModal.addEventListener('click', () => {
+        projectModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) {
+            projectModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+
+</body>
+</html>
